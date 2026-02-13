@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useRef } from "react"
 import { HeartPhotoCell } from "@/components/heart-photo-cell"
 import { GalleryLightbox } from "@/components/gallery-lightbox"
 
@@ -101,6 +101,7 @@ function getPhotoSrc(index: number): string {
 
 export function HeartGallery() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   // Collect all active cells in order
   const activeCells: { row: number; col: number; index: number }[] = []
@@ -114,9 +115,26 @@ export function HeartGallery() {
     }
   }
 
+  const playPhotoSong = useCallback(() => {
+    const audio = audioRef.current
+    if (!audio) return
+    try {
+      // Restart song softly on each click
+      audio.currentTime = 0
+      audio
+        .play()
+        .catch(() => {
+          // Ignore autoplay errors – user interaction should generally allow play
+        })
+    } catch {
+      // no-op
+    }
+  }, [])
+
   const handleOpen = useCallback((index: number) => {
     setSelectedIndex(index)
-  }, [])
+    playPhotoSong()
+  }, [playPhotoSong])
 
   const handleClose = useCallback(() => {
     setSelectedIndex(null)
@@ -132,6 +150,9 @@ export function HeartGallery() {
 
   return (
     <section className="relative py-20 px-4 overflow-hidden" style={{ background: "linear-gradient(180deg, #0d0a12 0%, #1a0a1e 40%, #120818 100%)" }}>
+      {/* Hidden audio for photo clicks */}
+      <audio ref={audioRef} src="/photo-song.mp3" preload="auto" />
+
       {/* Ambient glow orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-pink-600/10 blur-[120px] animate-pulse-slow pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-fuchsia-500/10 blur-[100px] animate-pulse-slow pointer-events-none" style={{ animationDelay: "3s" }} />
@@ -197,7 +218,7 @@ export function HeartGallery() {
 
       {/* Bottom caption */}
       <p className="text-center mt-12 text-pink-300/50 text-sm relative z-10 tracking-wide">
-        Click any memory to relive the moment
+        Click any memory to relive the moment (with our song)
       </p>
 
       {/* Lightbox - navigates through all 70 photos */}

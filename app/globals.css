@@ -223,3 +223,63 @@
   0% { width: 0%; }
   100% { width: 100%; }
 }
+
+/* Golden heart rain */
+@keyframes heart-rain {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 120vh, 0) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Heart burst from bottom */
+@keyframes heart-burst {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.4);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  60% {
+    transform: translate3d(0, -60vh, 0) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -90vh, 0) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Cute shake for proposal card */
+@keyframes cute-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-6px) rotate(-1deg);
+  }
+  30% {
+    transform: translateX(6px) rotate(1deg);
+  }
+  45% {
+    transform: translateX(-4px) rotate(-0.8deg);
+  }
+  60% {
+    transform: translateX(4px) rotate(0.8deg);
+  }
+  75% {
+    transform: translateX(-2px) rotate(-0.4deg);
+  }
+}
+
+.animate-cute-shake {
+  animation: cute-shake 0.6s ease-in-out;
+}

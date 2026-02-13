@@ -4,6 +4,8 @@ import { HeartGallery } from "@/components/heart-gallery"
 import { LoveLetter } from "@/components/love-letter"
 import { ShayariSection } from "@/components/shayari-section"
 import { MusicPlayer } from "@/components/music-player"
+import { PromisesSection } from "@/components/promises-section"
+import { FinalProposal } from "@/components/final-proposal"
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
       <HeartGallery />
       <LoveLetter />
       <ShayariSection />
+      <PromisesSection />
+      <FinalProposal />
       <MusicPlayer />
     </main>
   )

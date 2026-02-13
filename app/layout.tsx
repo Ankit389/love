@@ -7,8 +7,8 @@ const greatVibes = Great_Vibes({ weight: '400', subsets: ['latin'], variable: '-
 const poppins = Poppins({ weight: ['300', '400', '500', '600'], subsets: ['latin'], variable: '--font-sans' })
 
 export const metadata: Metadata = {
-  title: 'You Are My Everything',
-  description: 'A love letter written in code',
+  title: 'Anku and Pihu',
+  description: 'Anku and Pihu – a love letter written in code',
   generator: 'v0.app',
   icons: {
     icon: [

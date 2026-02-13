@@ -51,7 +51,7 @@ export function SheIsMyWorld() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          {'You Are My Everything \u{1F30D}\u{2764}\u{FE0F}'}
+          {'Anku & Pihu \u2014 You Are My Everything \u{1F30D}\u{2764}\u{FE0F}'}
         </h2>
 
         {/* Gold accent line */}
